@@ -14,9 +14,13 @@ jobs:
       - name: Install dependencies
         run: |
           pip install sphinx sphinx_rtd_theme myst_parser
+      - name: Set release version
+        run: |
+          RELEASE_VERSION=$(git describe --tags --abbrev=0 || echo "0.0.1")
+          echo "RELEASE_VERSION=$RELEASE_VERSION" >> $GITHUB_ENV
       - name: Sphinx create project
         run: |
-          sphinx-quickstart --sep -p "algorithms-implementation" -a "Ignacy Polak" -v "0.1" -r "0.1" -l en --ext-autodoc --ext-githubpages docs/ 
+          sphinx-quickstart --sep -p "algorithms-implementation" -a "Ignacy Polak" -v ${{ env.RELEASE_VERSION}} -r ${{ env.RELEASE_VERSION }} -l en --ext-autodoc --ext-githubpages docs/ 
           echo -ne "import os\nimport sys\nsys.path.insert(0, os.path.abspath('../../src'))\nhtml_theme = 'sphinx_rtd_theme'" >> docs/source/conf.py
       - name: Sphinx generate docs
         run: |
