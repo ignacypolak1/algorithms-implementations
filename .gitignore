@@ -1,0 +1,8 @@
+# directories
+**/__pycache__
+docs/build/**
+
+# Files
+setup.py
+src/main.py
+tests
