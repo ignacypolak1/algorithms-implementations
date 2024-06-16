@@ -1,6 +1,6 @@
 # directories
 **/__pycache__
-docs/build/**
+docs
 
 # Files
 setup.py
