@@ -17,7 +17,7 @@ jobs:
       - name: Sphinx create project
         run: |
           sphinx-quickstart --sep -p "algorithms-implementation" -a "Ignacy Polak" -v "0.1" -r "0.1" -l en --ext-autodoc --ext-githubpages docs/ 
-          echo -ne "import os\nimport sys\nsys.path.insert(0, os.path.abspath('../../src'))\nhtml_theme = 'dotted'" >> docs/source/conf.py
+          echo -ne "import os\nimport sys\nsys.path.insert(0, os.path.abspath('../../src'))\nhtml_theme = 'classic'" >> docs/source/conf.py
       - name: Sphinx generate docs
         run: |
           sphinx-apidoc -o docs/source/ src/
